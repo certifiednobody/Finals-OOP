@@ -166,7 +166,7 @@ public class AddEmployeeForm extends javax.swing.JFrame {
         
         if(tfEmpID.getText().isEmpty() || tfEmpName.getText().isEmpty() || tfEmpStat.getText().isEmpty() || tfEmpAddr.getText().isEmpty() || tfEmpEmail.getText().isEmpty() || tfEmpCont.getText().isEmpty() || tfEmpDept.getText().isEmpty() || tfEmpPos.getText().isEmpty() || tfEmpUname.getText().isEmpty() || tfEmpPass.getText().isEmpty() ) {
             JOptionPane.showMessageDialog(null, "Please Fill Out the Form", "Complete The Form",JOptionPane.ERROR_MESSAGE);
-        }else if(!tfEmpID.getText().contains("[0-9]+")) {
+        }else if(!tfEmpID.getText().matches("[0-9]+")) {
             JOptionPane.showMessageDialog(null, "Numbers are only allowed in Employee ID", "Error Input Value",JOptionPane.ERROR_MESSAGE);
             tfEmpID.setText("");
             tfEmpID.requestFocus();
