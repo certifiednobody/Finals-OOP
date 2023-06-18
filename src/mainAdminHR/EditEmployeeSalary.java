@@ -45,11 +45,12 @@ public class EditEmployeeSalary extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         tfEmpPos = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        btnSave = new javax.swing.JButton();
         tfBasicPay = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        tfHours = new javax.swing.JTextField();
+        tfAbsences = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        tfDaysWorked = new javax.swing.JTextField();
+        tfLates = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         tfTax = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -59,7 +60,8 @@ public class EditEmployeeSalary extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         tfNetSalary = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        btnSave = new javax.swing.JButton();
+        tfOvertime = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -103,41 +105,6 @@ public class EditEmployeeSalary extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(153, 153, 153));
         jLabel5.setText("Employee Position");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 196, -1, -1));
-        jPanel1.add(tfBasicPay, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 230, 140, 30));
-
-        jLabel6.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel6.setText("Basic Pay");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 268, -1, -1));
-        jPanel1.add(tfHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 230, 140, 30));
-
-        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setText("Hours per Day");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 268, -1, -1));
-        jPanel1.add(tfDaysWorked, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 230, 140, 30));
-
-        jLabel8.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel8.setText("Total Days Worked");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 268, -1, -1));
-        jPanel1.add(tfTax, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 310, 140, 30));
-
-        jLabel9.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel9.setText("Tax of Monthly Wage");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 350, -1, -1));
-        jPanel1.add(tfDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 310, 140, 30));
-        jPanel1.add(tfGross, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 230, 160, 30));
-
-        jLabel10.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel10.setText("Gross Salary");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 268, -1, -1));
-
-        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel11.setText("Deduction");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 350, -1, -1));
-        jPanel1.add(tfNetSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 310, 160, 30));
-
-        jLabel12.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel12.setText("Net Salary");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 350, -1, -1));
 
         btnSave.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSave.setText("SAVE");
@@ -147,6 +114,52 @@ public class EditEmployeeSalary extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 150, 40));
+        jPanel1.add(tfBasicPay, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 230, 140, 30));
+
+        jLabel6.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel6.setText("Basic Pay");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 268, -1, -1));
+        jPanel1.add(tfAbsences, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 230, 140, 30));
+
+        jLabel7.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel7.setText("Absences");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 268, -1, -1));
+        jPanel1.add(tfLates, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 230, 140, 30));
+
+        jLabel8.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel8.setText("Lates");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 268, -1, -1));
+        jPanel1.add(tfTax, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 310, 140, 30));
+
+        jLabel9.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel9.setText("Tax");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 350, -1, -1));
+        jPanel1.add(tfDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 310, 140, 30));
+
+        tfGross.setEditable(false);
+        tfGross.setFocusable(false);
+        jPanel1.add(tfGross, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 230, 160, 30));
+
+        jLabel10.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel10.setText("Gross Salary");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 268, -1, -1));
+
+        jLabel11.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel11.setText("Deduction");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 350, -1, -1));
+
+        tfNetSalary.setEditable(false);
+        tfNetSalary.setFocusable(false);
+        jPanel1.add(tfNetSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 310, 160, 30));
+
+        jLabel12.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel12.setText("Net Salary");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 350, -1, -1));
+        jPanel1.add(tfOvertime, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 310, 140, 30));
+
+        jLabel13.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel13.setText("Total Overtime");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 350, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,7 +177,7 @@ public class EditEmployeeSalary extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        if(tfEmpID.getText().isEmpty() || tfBasicPay.getText().isEmpty() || tfHours.getText().isEmpty() || tfDaysWorked.getText().isEmpty() || tfGross.getText().isEmpty() || tfTax.getText().isEmpty() || tfDeduction.getText().isEmpty() || tfNetSalary.getText().isEmpty()) {
+        if(tfEmpID.getText().isEmpty() || tfBasicPay.getText().isEmpty() || tfAbsences.getText().isEmpty() || tfLates.getText().isEmpty() || tfGross.getText().isEmpty() || tfTax.getText().isEmpty() || tfDeduction.getText().isEmpty() || tfNetSalary.getText().isEmpty() || tfOvertime.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please Fill Out the Form", "Complete The Form",JOptionPane.ERROR_MESSAGE);
         }else if(tfEmpID.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter a valid Employee ID", "Complete The Form",JOptionPane.ERROR_MESSAGE);
@@ -176,40 +189,50 @@ public class EditEmployeeSalary extends javax.swing.JFrame {
                 String empID = tfEmpID.getText();
                 String empName = tfEmpName.getText();
                 String empPos = tfEmpPos.getText();
+                
                 String empBP = tfBasicPay.getText();
-                String empHrs = tfHours.getText();
-                String empDW = tfDaysWorked.getText();
-                String empGS = tfGross.getText();
+                String empAB = tfAbsences.getText();
+                String empLT = tfLates.getText();
+                String empOT = tfOvertime.getText();
                 String empT = tfTax.getText();
                 String empD = tfDeduction.getText();
+                
+                double gross = Double.parseDouble(empBP)+Double.parseDouble(empOT)+(Double.parseDouble(empAB)-Double.parseDouble(empLT));
+                tfGross.setText(Double.toString(gross));
+                
+                double net = gross - (Double.parseDouble(empT)-Double.parseDouble(empD));
+                tfNetSalary.setText(Double.toString(net));
+                
+                String empGS = tfGross.getText();
                 String empNS = tfNetSalary.getText();
-
-                pst = con.prepareStatement("UPDATE tbl_payroll SET emp_id=?, emp_name=?, emp_pos=?, emp_basicpay=?, emp_hoursperday=?, emp_daysworked=?, emp_grosssalary=?, emp_tax=?, emp_deduction=?, emp_netsalary=? WHERE emp_id=?");
+                
+                pst = con.prepareStatement("UPDATE tbl_payroll SET emp_id=?, emp_name=?, emp_pos=?, emp_basicpay=?, emp_absences=?, emp_lates=?, emp_overtime=?, emp_grosspay=?, emp_tax=?, emp_deduction=?, emp_netpay=? WHERE emp_id=?");
                 
                 pst.setString(1, empID);
                 pst.setString(2, empName);
                 pst.setString(3, empPos);
                 
                 pst.setString(4, empBP);
-                pst.setString(5, empHrs);
-                pst.setString(6, empDW);
-                pst.setString(7, empGS);
-                pst.setString(8, empT);
-                pst.setString(9, empD);
-                pst.setString(10, empNS);
+                pst.setString(5, empAB);
+                pst.setString(6, empLT);
+                pst.setString(7, empOT);
+                pst.setString(8, empGS);
+                pst.setString(9, empT);
+                pst.setString(10, empD);
+                pst.setString(11, empNS);
                 
-                pst.setString(11, empID);
+                pst.setString(12, empID);
 
                 int k = pst.executeUpdate();
                 if(k == 1) {
                     JOptionPane.showMessageDialog(this, "Data updated Successfully. Please Refresh the Table");
-                    
                     tfEmpID.setText("");
                     tfEmpName.setText("");
                     tfEmpPos.setText("");
                     tfBasicPay.setText("");
-                    tfHours.setText("");
-                    tfDaysWorked.setText("");
+                    tfAbsences.setText("");
+                    tfLates.setText("");
+                    tfOvertime.setText("");
                     tfGross.setText("");
                     tfTax.setText("");
                     tfDeduction.setText("");
@@ -229,17 +252,19 @@ public class EditEmployeeSalary extends javax.swing.JFrame {
             pst = con.prepareStatement("SELECT * FROM tbl_payroll WHERE emp_id =?");
             pst.setString(1, getEmpID);
             rs = pst.executeQuery();
+           
             
             if(rs.next() == true) {
                 tfEmpName.setText(rs.getString(2));
                 tfEmpPos.setText(rs.getString(3));
                 tfBasicPay.setText(rs.getString(4));
-                tfHours.setText(rs.getString(5));
-                tfDaysWorked.setText(rs.getString(6));
-                tfGross.setText(rs.getString(7));
-                tfTax.setText(rs.getString(8));
-                tfDeduction.setText(rs.getString(9));
-                tfNetSalary.setText(rs.getString(10));
+                tfAbsences.setText(rs.getString(5));
+                tfLates.setText(rs.getString(6));
+                tfOvertime.setText(rs.getString(7));
+                tfGross.setText(rs.getString(8));
+                tfTax.setText(rs.getString(9));
+                tfDeduction.setText(rs.getString(10));
+                tfNetSalary.setText(rs.getString(11));
 
 
             }else {
@@ -248,8 +273,9 @@ public class EditEmployeeSalary extends javax.swing.JFrame {
                 tfEmpName.setText("");
                 tfEmpPos.setText("");
                 tfBasicPay.setText("");
-                tfHours.setText("");
-                tfDaysWorked.setText("");
+                tfAbsences.setText("");
+                tfLates.setText("");
+                tfOvertime.setText("");
                 tfGross.setText("");
                 tfTax.setText("");
                 tfDeduction.setText("");
@@ -310,6 +336,7 @@ public class EditEmployeeSalary extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -319,15 +346,16 @@ public class EditEmployeeSalary extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField tfAbsences;
     private javax.swing.JTextField tfBasicPay;
-    private javax.swing.JTextField tfDaysWorked;
     private javax.swing.JTextField tfDeduction;
     private javax.swing.JTextField tfEmpID;
     private javax.swing.JTextField tfEmpName;
     private javax.swing.JTextField tfEmpPos;
     private javax.swing.JTextField tfGross;
-    private javax.swing.JTextField tfHours;
+    private javax.swing.JTextField tfLates;
     private javax.swing.JTextField tfNetSalary;
+    private javax.swing.JTextField tfOvertime;
     private javax.swing.JTextField tfTax;
     // End of variables declaration//GEN-END:variables
 }

@@ -45,17 +45,18 @@ public class SalaryPanel extends javax.swing.JPanel {
                     v2.add(rs.getString("emp_id"));
                     v2.add(rs.getString("emp_name"));
                     v2.add(rs.getString("emp_basicpay"));
-                    v2.add(rs.getString("emp_hoursperday"));
-                    v2.add(rs.getString("emp_daysworked"));
-                    v2.add(rs.getString("emp_grosssalary"));                    
+                    v2.add(rs.getString("emp_absences"));
+                    v2.add(rs.getString("emp_lates"));  
+                    v2.add(rs.getString("emp_overtime"));  
+                    v2.add(rs.getString("emp_grosspay"));                    
                     v2.add(rs.getString("emp_tax"));                    
                     v2.add(rs.getString("emp_deduction"));
-                    v2.add(rs.getString("emp_netsalary"));                    
+                    v2.add(rs.getString("emp_netpay"));                    
                 }
                 dtm.addRow(v2);
             }
         }catch(SQLException e) {
-            Logger.getLogger(EmployeesPanel.class.getName()).log(Level.SEVERE, null, e);           
+            Logger.getLogger(SalaryPanel.class.getName()).log(Level.SEVERE, null, e);           
         }
     }
     
@@ -79,17 +80,18 @@ public class SalaryPanel extends javax.swing.JPanel {
                     v2.add(rs.getString("emp_id"));
                     v2.add(rs.getString("emp_name"));
                     v2.add(rs.getString("emp_basicpay"));
-                    v2.add(rs.getString("emp_hoursperday"));
-                    v2.add(rs.getString("emp_daysworked"));
-                    v2.add(rs.getString("emp_grosssalary"));                    
+                    v2.add(rs.getString("emp_absences"));
+                    v2.add(rs.getString("emp_lates"));  
+                    v2.add(rs.getString("emp_overtime"));  
+                    v2.add(rs.getString("emp_grosspay"));                    
                     v2.add(rs.getString("emp_tax"));                    
                     v2.add(rs.getString("emp_deduction"));
-                    v2.add(rs.getString("emp_netsalary"));                 
+                    v2.add(rs.getString("emp_netpay"));              
                 }
                 dtm.addRow(v2);
             }
         }catch(SQLException e) {
-            Logger.getLogger(EmployeesPanel.class.getName()).log(Level.SEVERE, null, e); 
+            Logger.getLogger(SalaryPanel.class.getName()).log(Level.SEVERE, null, e); 
         }
     }
     
@@ -127,11 +129,11 @@ public class SalaryPanel extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID", "Employee Name", "Basic Pay", "Hours per Day", "Total Days Worked", "Gross Salary", "Monthly Wage Tax", "Deduction", "Net Salary"
+                "ID", "Employee Name", "Basic Pay", "Absences", "Lates", "Total Overtime", "Gross Pay", "Tax", "Deduction", "Net Pay"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, true, true
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -168,6 +170,7 @@ public class SalaryPanel extends javax.swing.JPanel {
         });
 
         lblRefresh.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANGELO MIGUEL\\Documents\\icons8\\icons8-refresh-30.png")); // NOI18N
+        lblRefresh.setToolTipText("Refresh Table");
         lblRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblRefresh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

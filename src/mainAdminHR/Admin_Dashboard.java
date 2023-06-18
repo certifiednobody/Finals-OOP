@@ -54,7 +54,7 @@ public class Admin_Dashboard extends javax.swing.JFrame {
         dashboardPanel1 = new mainAdminHR.DashboardPanel();
         employeesPanel2 = new mainAdminHR.EmployeesPanel();
         salaryPanel1 = new mainAdminHR.SalaryPanel();
-        attendancePanel2 = new mainAdminHR.AttendancePanel();
+        attendancePanel1 = new mainAdminHR.AttendancePanel();
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -265,19 +265,7 @@ public class Admin_Dashboard extends javax.swing.JFrame {
         jTabbedPane1.addTab("tab1", dashboardPanel1);
         jTabbedPane1.addTab("tab2", employeesPanel2);
         jTabbedPane1.addTab("tab5", salaryPanel1);
-
-        javax.swing.GroupLayout attendancePanel2Layout = new javax.swing.GroupLayout(attendancePanel2);
-        attendancePanel2.setLayout(attendancePanel2Layout);
-        attendancePanel2Layout.setHorizontalGroup(
-            attendancePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 920, Short.MAX_VALUE)
-        );
-        attendancePanel2Layout.setVerticalGroup(
-            attendancePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 599, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("tab4", attendancePanel2);
+        jTabbedPane1.addTab("tab4", attendancePanel1);
 
         jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, -30, 920, 630));
 
@@ -408,7 +396,7 @@ public class Admin_Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel Logout_Menu;
     private javax.swing.JPanel Salary_Menu;
     public javax.swing.JLabel adminUsername;
-    private mainAdminHR.AttendancePanel attendancePanel2;
+    private mainAdminHR.AttendancePanel attendancePanel1;
     private mainAdminHR.DashboardPanel dashboardPanel1;
     private mainAdminHR.EmployeesPanel employeesPanel2;
     private javax.swing.JLabel jLabel1;

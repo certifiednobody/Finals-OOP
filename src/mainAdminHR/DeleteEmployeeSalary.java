@@ -45,11 +45,12 @@ public class DeleteEmployeeSalary extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         tfEmpPos = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JButton();
         tfBasicPay = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        tfHours = new javax.swing.JTextField();
+        tfAbsences = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        tfDaysWorked = new javax.swing.JTextField();
+        tfLates = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         tfTax = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
@@ -59,7 +60,8 @@ public class DeleteEmployeeSalary extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         tfNetSalary = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        btnDelete = new javax.swing.JButton();
+        tfOvertime = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -104,6 +106,15 @@ public class DeleteEmployeeSalary extends javax.swing.JFrame {
         jLabel5.setText("Employee Position");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 196, -1, -1));
 
+        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 150, 40));
+
         tfBasicPay.setEditable(false);
         tfBasicPay.setFocusable(false);
         jPanel1.add(tfBasicPay, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 230, 140, 30));
@@ -112,33 +123,33 @@ public class DeleteEmployeeSalary extends javax.swing.JFrame {
         jLabel6.setText("Basic Pay");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 268, -1, -1));
 
-        tfHours.setEditable(false);
-        tfHours.setFocusable(false);
-        jPanel1.add(tfHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 230, 140, 30));
+        tfAbsences.setEditable(false);
+        tfAbsences.setFocusable(false);
+        jPanel1.add(tfAbsences, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 230, 140, 30));
 
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel7.setText("Hours per Day");
+        jLabel7.setText("Absences");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 268, -1, -1));
 
-        tfDaysWorked.setEditable(false);
-        tfDaysWorked.setFocusable(false);
-        jPanel1.add(tfDaysWorked, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 230, 140, 30));
+        tfLates.setEditable(false);
+        tfLates.setFocusable(false);
+        jPanel1.add(tfLates, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 230, 140, 30));
 
         jLabel8.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel8.setText("Total Days Worked");
+        jLabel8.setText("Lates");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 268, -1, -1));
 
         tfTax.setEditable(false);
         tfTax.setFocusable(false);
-        jPanel1.add(tfTax, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 310, 140, 30));
+        jPanel1.add(tfTax, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 310, 140, 30));
 
         jLabel9.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel9.setText("Tax of Monthly Wage");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 350, -1, -1));
+        jLabel9.setText("Tax");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 350, -1, -1));
 
         tfDeduction.setEditable(false);
         tfDeduction.setFocusable(false);
-        jPanel1.add(tfDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 310, 140, 30));
+        jPanel1.add(tfDeduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 310, 140, 30));
 
         tfGross.setEditable(false);
         tfGross.setFocusable(false);
@@ -150,24 +161,23 @@ public class DeleteEmployeeSalary extends javax.swing.JFrame {
 
         jLabel11.setForeground(new java.awt.Color(153, 153, 153));
         jLabel11.setText("Deduction");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 350, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 350, -1, -1));
 
         tfNetSalary.setEditable(false);
         tfNetSalary.setFocusable(false);
-        jPanel1.add(tfNetSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 310, 160, 30));
+        jPanel1.add(tfNetSalary, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 310, 160, 30));
 
         jLabel12.setForeground(new java.awt.Color(153, 153, 153));
         jLabel12.setText("Net Salary");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 350, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(492, 350, -1, -1));
 
-        btnDelete.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnDelete.setText("DELETE");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, 150, 40));
+        tfOvertime.setEditable(false);
+        tfOvertime.setFocusable(false);
+        jPanel1.add(tfOvertime, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 310, 140, 30));
+
+        jLabel13.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel13.setText("Total Overtime");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 350, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,12 +205,13 @@ public class DeleteEmployeeSalary extends javax.swing.JFrame {
                 tfEmpName.setText(rs.getString(2));
                 tfEmpPos.setText(rs.getString(3));
                 tfBasicPay.setText(rs.getString(4));
-                tfHours.setText(rs.getString(5));
-                tfDaysWorked.setText(rs.getString(6));
-                tfGross.setText(rs.getString(7));
-                tfTax.setText(rs.getString(8));
-                tfDeduction.setText(rs.getString(9));
-                tfNetSalary.setText(rs.getString(10));
+                tfAbsences.setText(rs.getString(5));
+                tfLates.setText(rs.getString(6));
+                tfOvertime.setText(rs.getString(7));
+                tfGross.setText(rs.getString(8));
+                tfTax.setText(rs.getString(9));
+                tfDeduction.setText(rs.getString(10));
+                tfNetSalary.setText(rs.getString(11));
 
             }else {
                 JOptionPane.showMessageDialog(this, "Employee ID does not exist. Please try again.", "ID cannot be found", JOptionPane.ERROR_MESSAGE);
@@ -208,8 +219,9 @@ public class DeleteEmployeeSalary extends javax.swing.JFrame {
                 tfEmpName.setText("");
                 tfEmpPos.setText("");
                 tfBasicPay.setText("");
-                tfHours.setText("");
-                tfDaysWorked.setText("");
+                tfAbsences.setText("");
+                tfLates.setText("");
+                tfOvertime.setText("");
                 tfGross.setText("");
                 tfTax.setText("");
                 tfDeduction.setText("");
@@ -235,21 +247,19 @@ public class DeleteEmployeeSalary extends javax.swing.JFrame {
                 int k = pst.executeUpdate();
             
                 if(k == 1) {
-                    EmployeesPanel ep = new EmployeesPanel();
-                    ep.Fetch();
                     JOptionPane.showMessageDialog(this, "Data successfully deleted. Please Refresh the Table");
-                    
                     tfEmpID.setText("");
                     tfEmpName.setText("");
                     tfEmpPos.setText("");
                     tfBasicPay.setText("");
-                    tfHours.setText("");
-                    tfDaysWorked.setText("");
+                    tfAbsences.setText("");
+                    tfLates.setText("");
+                    tfOvertime.setText("");
                     tfGross.setText("");
                     tfTax.setText("");
                     tfDeduction.setText("");
                     tfNetSalary.setText("");
-                    
+                
                     this.dispose();
                     
                 }else {
@@ -263,7 +273,7 @@ public class DeleteEmployeeSalary extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-       int rep = JOptionPane.showConfirmDialog(this,"Do you wish to close this form?", "Cancel Delete Salary Form",JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        int rep = JOptionPane.showConfirmDialog(this,"Do you wish to close this form?", "Cancel Delete Salary Form",JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
         switch (rep) {
             case JOptionPane.YES_OPTION -> this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             case JOptionPane.NO_OPTION -> this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -310,6 +320,7 @@ public class DeleteEmployeeSalary extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -319,15 +330,16 @@ public class DeleteEmployeeSalary extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTextField tfAbsences;
     private javax.swing.JTextField tfBasicPay;
-    private javax.swing.JTextField tfDaysWorked;
     private javax.swing.JTextField tfDeduction;
     private javax.swing.JTextField tfEmpID;
     private javax.swing.JTextField tfEmpName;
     private javax.swing.JTextField tfEmpPos;
     private javax.swing.JTextField tfGross;
-    private javax.swing.JTextField tfHours;
+    private javax.swing.JTextField tfLates;
     private javax.swing.JTextField tfNetSalary;
+    private javax.swing.JTextField tfOvertime;
     private javax.swing.JTextField tfTax;
     // End of variables declaration//GEN-END:variables
 }

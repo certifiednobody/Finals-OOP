@@ -5,6 +5,9 @@
 package mainEmployee;
 
 import java.awt.*;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import main.LoginPage;
 
@@ -12,13 +15,28 @@ public class Employee_Dashboard extends javax.swing.JFrame {
 
     Color DefaultColor, ClickedColor;
     
+    Connection con; 
+    PreparedStatement pst;
+    ResultSet rs;
+    
+    public void Connect() {
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/db_employeemgmt", "root", "");
+        } catch (ClassNotFoundException e) {
+            Logger.getLogger(Employee_Dashboard.class.getName()).log(Level.SEVERE, null, e);
+        } catch (SQLException e) {
+            Logger.getLogger(Employee_Dashboard.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+    
     public Employee_Dashboard() {
         initComponents();
+        Connect();
         
         DefaultColor  = new Color(48, 48, 48);
         ClickedColor = new Color(97, 97, 97);
-        
-        Dashboard_Menu.setBackground(ClickedColor);
+        Profile_Menu.setBackground(ClickedColor);
         Payslip_Menu.setBackground(DefaultColor);
         Attendance_Menu.setBackground(DefaultColor);
         Logout_Menu.setBackground(DefaultColor);
@@ -37,7 +55,7 @@ public class Employee_Dashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblEmpUname = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        Dashboard_Menu = new javax.swing.JPanel();
+        Profile_Menu = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         Payslip_Menu = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -45,7 +63,10 @@ public class Employee_Dashboard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Logout_Menu = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        profile1 = new mainEmployee.Profile();
+        payslipPanel2 = new mainEmployee.PayslipPanel();
+        attendancePanel1 = new mainEmployee.AttendancePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -67,12 +88,12 @@ public class Employee_Dashboard extends javax.swing.JFrame {
         jPanel2.add(lblEmpUname, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, 20));
         jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 160, 20));
 
-        Dashboard_Menu.addMouseListener(new java.awt.event.MouseAdapter() {
+        Profile_Menu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Dashboard_MenuMouseClicked(evt);
+                Profile_MenuMouseClicked(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                Dashboard_MenuMousePressed(evt);
+                Profile_MenuMousePressed(evt);
             }
         });
 
@@ -80,26 +101,24 @@ public class Employee_Dashboard extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANGELO MIGUEL\\Documents\\icons8\\icons8-person-30.png")); // NOI18N
-        jLabel2.setText("  Personal ");
+        jLabel2.setText("  Profile ");
         jLabel2.setToolTipText("");
 
-        javax.swing.GroupLayout Dashboard_MenuLayout = new javax.swing.GroupLayout(Dashboard_Menu);
-        Dashboard_Menu.setLayout(Dashboard_MenuLayout);
-        Dashboard_MenuLayout.setHorizontalGroup(
-            Dashboard_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Dashboard_MenuLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+        javax.swing.GroupLayout Profile_MenuLayout = new javax.swing.GroupLayout(Profile_Menu);
+        Profile_Menu.setLayout(Profile_MenuLayout);
+        Profile_MenuLayout.setHorizontalGroup(
+            Profile_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Profile_MenuLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel2)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
-        Dashboard_MenuLayout.setVerticalGroup(
-            Dashboard_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Dashboard_MenuLayout.createSequentialGroup()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        Profile_MenuLayout.setVerticalGroup(
+            Profile_MenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        jPanel2.add(Dashboard_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 180, 50));
+        jPanel2.add(Profile_Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 180, 50));
 
         Payslip_Menu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -199,8 +218,11 @@ public class Employee_Dashboard extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jTabbedPane1.setPreferredSize(new java.awt.Dimension(920, 631));
-        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, -30, 920, 630));
+        jTabbedPane2.addTab("tab3", profile1);
+        jTabbedPane2.addTab("tab2", payslipPanel2);
+        jTabbedPane2.addTab("tab3", attendancePanel1);
+
+        jPanel1.add(jTabbedPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, -30, 920, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -221,37 +243,37 @@ public class Employee_Dashboard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Dashboard_MenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Dashboard_MenuMousePressed
-        Dashboard_Menu.setBackground(ClickedColor);
+    private void Profile_MenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Profile_MenuMousePressed
+        Profile_Menu.setBackground(ClickedColor);
         Payslip_Menu.setBackground(DefaultColor);
         Attendance_Menu.setBackground(DefaultColor);
         Logout_Menu.setBackground(DefaultColor);
-    }//GEN-LAST:event_Dashboard_MenuMousePressed
+    }//GEN-LAST:event_Profile_MenuMousePressed
 
     private void Payslip_MenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Payslip_MenuMousePressed
-        Dashboard_Menu.setBackground(DefaultColor);
+        Profile_Menu.setBackground(DefaultColor);
         Payslip_Menu.setBackground(ClickedColor);
         Attendance_Menu.setBackground(DefaultColor);
         Logout_Menu.setBackground(DefaultColor);
     }//GEN-LAST:event_Payslip_MenuMousePressed
 
     private void Attendance_MenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Attendance_MenuMousePressed
-        Dashboard_Menu.setBackground(DefaultColor);
+        Profile_Menu.setBackground(DefaultColor);
         Payslip_Menu.setBackground(DefaultColor);
         Attendance_Menu.setBackground(ClickedColor);
         Logout_Menu.setBackground(DefaultColor);
     }//GEN-LAST:event_Attendance_MenuMousePressed
 
-    private void Dashboard_MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Dashboard_MenuMouseClicked
-        jTabbedPane1.setSelectedIndex(1);
-    }//GEN-LAST:event_Dashboard_MenuMouseClicked
+    private void Profile_MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Profile_MenuMouseClicked
+        jTabbedPane2.setSelectedIndex(0);
+    }//GEN-LAST:event_Profile_MenuMouseClicked
 
     private void Payslip_MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Payslip_MenuMouseClicked
-        jTabbedPane1.setSelectedIndex(2);
+        jTabbedPane2.setSelectedIndex(1);
     }//GEN-LAST:event_Payslip_MenuMouseClicked
 
     private void Attendance_MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Attendance_MenuMouseClicked
-        jTabbedPane1.setSelectedIndex(3);
+        jTabbedPane2.setSelectedIndex(2);
     }//GEN-LAST:event_Attendance_MenuMouseClicked
 
     private void Logout_MenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Logout_MenuMousePressed
@@ -302,9 +324,10 @@ public class Employee_Dashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Attendance_Menu;
-    private javax.swing.JPanel Dashboard_Menu;
     private javax.swing.JPanel Logout_Menu;
     private javax.swing.JPanel Payslip_Menu;
+    private javax.swing.JPanel Profile_Menu;
+    private mainEmployee.AttendancePanel attendancePanel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -313,7 +336,9 @@ public class Employee_Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     public javax.swing.JLabel lblEmpUname;
+    private mainEmployee.PayslipPanel payslipPanel2;
+    private mainEmployee.Profile profile1;
     // End of variables declaration//GEN-END:variables
 }

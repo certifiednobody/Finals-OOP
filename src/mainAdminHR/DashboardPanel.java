@@ -60,10 +60,11 @@ public class DashboardPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
 
@@ -111,6 +112,9 @@ public class DashboardPanel extends javax.swing.JPanel {
         jLabel3.setText("Leave Requests");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, 20));
 
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANGELO MIGUEL\\Documents\\icons8\\icons8-leave-60.png")); // NOI18N
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
         add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 270, 80));
 
         jPanel4.setBackground(new java.awt.Color(241, 244, 245));
@@ -126,22 +130,10 @@ public class DashboardPanel extends javax.swing.JPanel {
         jLabel6.setText("Absentees");
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 81, 20));
 
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANGELO MIGUEL\\Documents\\icons8\\icons8-employee-60.png")); // NOI18N
+        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, 270, 80));
-
-        jPanel6.setBackground(new java.awt.Color(241, 244, 245));
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 370, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-
-        add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 190, 370, 120));
 
         jPanel7.setBackground(new java.awt.Color(241, 244, 245));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -150,7 +142,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         jLabel10.setText("Pending Requests");
         jPanel7.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 15, -1, -1));
 
-        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 330, 370, 230));
+        add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 190, 370, 370));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -163,12 +155,13 @@ public class DashboardPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     // End of variables declaration//GEN-END:variables
 }
