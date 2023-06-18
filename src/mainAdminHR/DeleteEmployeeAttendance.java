@@ -4,7 +4,10 @@
  */
 package mainAdminHR;
 
+import java.util.Date;
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -24,6 +27,8 @@ public class DeleteEmployeeAttendance extends javax.swing.JFrame {
         } catch (SQLException e) {
             Logger.getLogger(DeleteEmployeeAttendance.class.getName()).log(Level.SEVERE, null, e);
         }
+        
+        tfDate.setEnabled(false);
     }
     
     public DeleteEmployeeAttendance() {
@@ -77,7 +82,7 @@ public class DeleteEmployeeAttendance extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Add Attendance Record");
+        jLabel3.setText("Delete Attendance Record");
 
         tfEmpName.setEditable(false);
         tfEmpName.setFocusable(false);
@@ -238,13 +243,19 @@ public class DeleteEmployeeAttendance extends javax.swing.JFrame {
     private void tfEmpIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfEmpIDActionPerformed
         try {
             String getEmpID = tfEmpID.getText();
-            pst = con.prepareStatement("SELECT * FROM tbl_payroll WHERE emp_id =?");
+            pst = con.prepareStatement("SELECT * FROM tbl_attendance WHERE emp_id =?");
             pst.setString(1, getEmpID);
             rs = pst.executeQuery();
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
             if(rs.next() == true) {
                 tfEmpName.setText(rs.getString(2));
-                
+                try {
+                    tfDate.setDate(sdf.parse(rs.getString(3)));
+                } catch (ParseException ex) {
+                    Logger.getLogger(EditEmployeeAttendance.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 tfTimeIn.setText(rs.getString(4));
                 tfTimeOut.setText(rs.getString(5));
                 tfOvertime.setText(rs.getString(6));
@@ -255,7 +266,7 @@ public class DeleteEmployeeAttendance extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Employee ID does not exist. Please try again.", "ID cannot be found", JOptionPane.ERROR_MESSAGE);
                 tfEmpID.setText("");
                 tfEmpName.setText("");
-                
+                tfDate.setDate(null);
                 tfTimeIn.setText("");
                 tfTimeOut.setText("");
                 tfOvertime.setText("");
@@ -286,6 +297,7 @@ public class DeleteEmployeeAttendance extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Data Deleted Successfully. Please Refresh the Table");
                     tfEmpID.setText("");
                     tfEmpName.setText("");
+                    tfDate.setDate(null);
                     tfTimeIn.setText("");
                     tfTimeOut.setText("");
                     tfOvertime.setText("");

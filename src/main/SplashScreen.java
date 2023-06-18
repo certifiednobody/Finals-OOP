@@ -19,8 +19,8 @@ public class SplashScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         progbar = new javax.swing.JProgressBar();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         progbarNum = new javax.swing.JLabel();
 
@@ -32,12 +32,12 @@ public class SplashScreen extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 500));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 60)); // NOI18N
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANGELO MIGUEL\\Documents\\icons8\\logo-removebg-preview.png")); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 70, -1, -1));
-
         progbar.setBackground(new java.awt.Color(242, 242, 242));
         jPanel1.add(progbar, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 480, 920, 30));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 60)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\ANGELO MIGUEL\\Documents\\icons8\\J_logo.png")); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, 440));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Loading...");

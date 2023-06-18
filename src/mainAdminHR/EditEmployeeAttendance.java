@@ -5,6 +5,8 @@
 package mainAdminHR;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -225,10 +227,16 @@ public class EditEmployeeAttendance extends javax.swing.JFrame {
             pst = con.prepareStatement("SELECT * FROM tbl_attendance WHERE emp_id =?");
             pst.setString(1, getEmpID);
             rs = pst.executeQuery();
-
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            
             if(rs.next() == true) {
                 tfEmpName.setText(rs.getString(2));
-                
+                try {
+                    tfDate.setDate(sdf.parse(rs.getString(3)));
+                } catch (ParseException ex) {
+                    Logger.getLogger(EditEmployeeAttendance.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 tfTimeIn.setText(rs.getString(4));
                 tfTimeOut.setText(rs.getString(5));
                 tfOvertime.setText(rs.getString(6));
@@ -238,7 +246,7 @@ public class EditEmployeeAttendance extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Employee ID does not exist. Please try again.", "ID cannot be found", JOptionPane.ERROR_MESSAGE);
                 tfEmpID.setText("");
                 tfEmpName.setText("");
-                
+                tfDate.setDate(null);
                 tfTimeIn.setText("");
                 tfTimeOut.setText("");
                 tfOvertime.setText("");
@@ -261,10 +269,12 @@ public class EditEmployeeAttendance extends javax.swing.JFrame {
             tfEmpID.requestFocus();
         }else {
             try {
+                java.util.Date d = tfDate.getDate();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                
                 String empID = tfEmpID.getText();
                 String empName = tfEmpName.getText();
-
-                String date = tfDate.getDate().toString();
+                String date = sdf.format(d);
                 String timeIn = tfTimeIn.getText();
                 String timeOut = tfTimeOut.getText();
                 String overT = tfOvertime.getText();
@@ -274,7 +284,7 @@ public class EditEmployeeAttendance extends javax.swing.JFrame {
                 pst = con.prepareStatement("UPDATE tbl_attendance SET emp_id=?, emp_name=?, date=?, timein=?, timeout=?, overtime=?, late=?, absent=? WHERE emp_id=?");
                 pst.setString(1, empID);
                 pst.setString(2, empName);
-
+                pst.setString(3, date);
                 pst.setString(3, date);
                 pst.setString(4, timeIn);
                 pst.setString(5, timeOut);
@@ -290,6 +300,7 @@ public class EditEmployeeAttendance extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Data Added Successfully. Please Refresh the Table");
                     tfEmpID.setText("");
                     tfEmpName.setText("");
+                    tfDate.setDate(null);
                     tfTimeIn.setText("");
                     tfTimeOut.setText("");
                     tfOvertime.setText("");

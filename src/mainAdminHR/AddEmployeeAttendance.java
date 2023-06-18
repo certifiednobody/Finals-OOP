@@ -5,6 +5,7 @@
 package mainAdminHR;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -177,10 +178,12 @@ public class AddEmployeeAttendance extends javax.swing.JFrame {
             tfEmpID.requestFocus();
         }else {
             try {
+                java.util.Date d = tfDate.getDate();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                
                 String empID = tfEmpID.getText();
                 String empName = tfEmpName.getText();
-
-                String date = tfDate.getDate().toString();
+                String date = sdf.format(d);
                 String timeIn = tfTimeIn.getText();
                 String timeOut = tfTimeOut.getText();
                 String overT = tfOvertime.getText();
@@ -190,7 +193,6 @@ public class AddEmployeeAttendance extends javax.swing.JFrame {
                 pst = con.prepareStatement("INSERT INTO tbl_attendance(emp_id, emp_name, date, timein, timeout, overtime, late, absent) VALUES(?,?,?,?,?,?,?,?)");
                 pst.setString(1, empID);
                 pst.setString(2, empName);
-                
                 pst.setString(3, date);
                 pst.setString(4, timeIn);
                 pst.setString(5, timeOut);
@@ -204,6 +206,7 @@ public class AddEmployeeAttendance extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Data Added Successfully. Please Refresh the Table");
                     tfEmpID.setText("");
                     tfEmpName.setText("");
+                    tfDate.setDate(null);
                     tfTimeIn.setText("");
                     tfTimeOut.setText("");
                     tfOvertime.setText("");
