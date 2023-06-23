@@ -4,8 +4,10 @@
  */
 package main;
 
-import mainAdminHR.Admin_Dashboard;
-import mainEmployee.Employee_Dashboard;
+import forAdmin.Admin_Dashboard;
+import forEmployee.ChangePasswordForm;
+import forEmployee.Employee_Dashboard;
+import forEmployee.PersonalInfo;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -153,12 +155,12 @@ public class LoginPage extends javax.swing.JFrame {
         }
         else {
             try {
-                pst = con.prepareStatement("SELECT * FROM tbladmins");
+                pst = con.prepareStatement("SELECT * FROM admin_accounts");
                 rs = pst.executeQuery();
                 
                 while(rs.next()) {
-                    String username = rs.getString("admin_username");
-                    String password = rs.getString("admin_password");
+                    String username = rs.getString(2);
+                    String password = rs.getString(3);
                    
                     if(uname.equals(username) && pass.equals(password)) {
                         x++;
@@ -177,7 +179,6 @@ public class LoginPage extends javax.swing.JFrame {
                 }
                 else {
                     JOptionPane.showMessageDialog(this, "Username or Password Incorrect. Please Try Again.", "Incorrect Username/Password", JOptionPane.ERROR_MESSAGE);
-
                 }
             }catch(SQLException e) {
                 Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, e);
@@ -189,31 +190,33 @@ public class LoginPage extends javax.swing.JFrame {
         String uname = txtUsername.getText();
         String pass = new String(txtPassword.getPassword());
         int x = 0;
-        
+        String emp_id = "";
         if(txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()){
             JOptionPane.showMessageDialog(this, "Please Fill Out the Form", "Complete The Form",JOptionPane.ERROR_MESSAGE);
         }
         else {
             try {
-                pst = con.prepareStatement("SELECT * FROM tbl_employees");
+                pst = con.prepareStatement("SELECT * FROM employee_accounts WHERE emp_username='"+uname+"' AND emp_password='"+pass+"'");
                 rs = pst.executeQuery();
                 
                 while(rs.next()) {
-                    String username = rs.getString("emp_username");
-                    String password = rs.getString("emp_password");
-                    String position = rs.getString("emp_position");
-                   
+                    emp_id = rs.getString(2);
+                    String username = rs.getString(5);
+                    String password = rs.getString(6);
+                    
                     if(uname.equals(username) && pass.equals(password)) {
                         x++;
-                        
                     }else {
                         txtUsername.setText("");
                         txtPassword.setText("");
                     }            
                 }
-                if(x == 1) {
+                if(x == 1) {               
+                    PersonalInfo.gl_emp_id = emp_id;
+                    Employee_Dashboard.gl_emp_id = emp_id;     
+                    ChangePasswordForm.gl_emp_id = emp_id;
                     Employee_Dashboard ed = new Employee_Dashboard();
-                    ed.updateUnameAndPos(uname);
+                                        
                     JOptionPane.showMessageDialog(this, "Logged In Successfully");
                     ed.setVisible(true);
                     this.dispose();
